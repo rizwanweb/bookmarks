@@ -8,7 +8,7 @@
         Your username and password did'nt match.
     </p>
 {% else %}
-    <p>Please use the following form to log-in:</p>
+    <p>Please use the following form to log-in. if you dont have an account <a href="{% url 'register' %}">Register here</a></p>
 {% endif %}
 <div class="login-form">
     <form action="" method="post">
