@@ -1,8 +1,10 @@
+from time import sleep
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Profile
 # Create your views here.
@@ -38,6 +40,7 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Profile Updated Successfully')
             return render(request, 'account/dashboard.html')
     else:
         user_form = UserEditForm(instance=request.user)
